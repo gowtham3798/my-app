@@ -1,5 +1,42 @@
-.App {
-    font-family: sans-serif;
-    text-align: center;
-  }
-  
+/* .App {
+  font-family: sans-serif;
+  text-align: center;
+} */
+body {
+  margin: 24px;
+}
+.movie-list {
+  /* grid-template-rows: repeat(auto-fit,minmax(12rem,2fr)); */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+.movie-container {
+  width: 15rem;
+  /* display: inline-grid; */
+
+  gap: cm;
+  /* border: 1px solid black; */
+  margin: 2rem;
+  padding: 1rem;
+}
+
+.movie-img {
+  height: 15rem;
+  width: 15rem;
+  object-fit: cover;
+}
+
+.movie-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+.movie-synopsis {
+  padding: 0;
+  margin: 0;
+
+  /* padding: 0rem; */
+}
