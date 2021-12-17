@@ -1,7 +1,12 @@
 import "./styles.css";
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import { useState } from "react";
+
+
 
 export default function App() {
-  const users = [
+  const INITIAL_STATE = [
     {
       movie: "12 Angry Men",
       poster:
@@ -119,25 +124,145 @@ export default function App() {
     }
   ];
 
-  // const b ={color : "red"};
+  const [movieList, setList] = useState(INITIAL_STATE);
+  const [movie, setName] = useState(" ");
+  const [poster, setPoster] = useState(" ");
+  const [rating, setRating] = useState(" ");
+  const [summary, setSummary] = useState(" ");
+  console.log([...movieList]);
+
   return (
     <div className="App">
-      <div className="movie-list">
-        {users.map(({ movie, poster, rating, summary }) => (
-          <Msg
-            poster={poster}
-            movie={movie}
-            rating={rating}
-            summary={summary}
-          />
-        ))}
+      <h1 className="hea">MOVIES</h1>
+    <div className="add-movie-form">
+      <TextField id="standard-basic" label="movie title" variant="standard" 
+        value={movie}
+        onChange={(event) => setName(event.target.value)}
+       
+      />
+     <TextField id="standard-basic" label="image url" variant="standard"
+       
+        value={poster}
+        onChange={(event) => setPoster(event.target.value)}
+      />
+      <TextField id="standard-basic" label="imdb rating" variant="standard"
+        
+        value={rating}
+        onChange={(event) => setRating(event.target.value)}
+      />
+      <TextField id="standard-basic" label="summary" variant="standard"
+        value={summary}
+        onChange={(event) => setSummary(event.target.value)}
+        
+      />
+        <Button variant="contained"
+          onClick={() => {
+            const newMovie = {
+              movie,
+              poster,
+              rating,
+              summary
+            };
+            setList([...movieList, newMovie]);
+          }}
+        >
+         UPLOAD
+        </Button>
+      </div>
+      {/* <MovieList movies={movies} /> */}
+      <MovieList movies={movieList} setList={setList} />
+      {/* <MovieList movies={remaining} /> */}
+      {/* console.log([...movieList]) */}
+    </div>
+  );
+}
+
+function MovieList({ movies, setList }) {
+  return (
+    <div className="movie-list">
+      {movies.map(({ movie, poster, rating, summary }, index) => (
+        <Movie
+          deleteButton={
+            <Button variant="outlined" color="error"  size="small"
+              onClick={() => {
+                const deleteindex = index;
+                const remaining = movies.filter(
+                  (mv, ind) => deleteindex !== ind
+                );
+                console.log(movies, remaining);
+                setList(remaining);
+              }}
+            >
+              delete
+            </Button>
+          }
+          poster={poster}
+          movie={movie}
+          rating={rating}
+          summary={summary}
+        />
+      ))}
+    </div>
+  );
+}
+
+function Movie({ movie, poster, rating, summary, deleteButton }) {
+  const [show, setShow] = useState(false);
+  const a = { display: show ? "block" : "none" };
+  return (
+    <div>
+      <div>
+        <div className="movie-container">
+          <img src={poster} alt="" className="movie-img" />
+          <div className="movie-title">
+            <h2>{movie}</h2>
+            <p>
+              <Color rating={rating} />
+            </p>
+          </div>
+          <Button variant="outlined" onClick={() => setShow(!show)}>Toggled summary</Button>
+          <p style={a} className="movie-summary">
+            {summary}
+          </p>
+          <div className="counter-container">
+            <Counter />
+          </div>
+          <div className="delete">
+            {deleteButton}</div>
+            
+        </div>
       </div>
     </div>
   );
 }
-// const props = {
-// img: "https://data.whicdn.com/images/345606212/original.jpg",
-// };
+
+function Counter() {
+  const [like, setLike] = useState(0);
+  const [dislike, setLike1] = useState(0);
+  return (
+    <div className="counter-container">
+      <div>
+      <Button variant="contained" onClick={() => setLike(like + 1)}>
+          {" "}
+          <span role="img" aria-label="emo">
+            👍
+          </span>
+          {like}
+        </Button>
+      </div>
+      <div>
+        <Button variant="contained"  onClick={() => setLike1(dislike + 1)}>
+          {" "}
+          <span role="img" aria-label="emo">
+            👎
+          </span>
+          {dislike}
+        </Button>
+      </div>
+    </div>
+  );
+}
+
 function Color({ rating }) {
   const a = { color: "green", fontSize: "13px" };
   const b = { color: "red", fontSize: "13px" };
@@ -159,19 +284,4 @@ function Color({ rating }) {
     </p>
   );
 }
-function Msg({ movie, poster, rating, summary }) {
-  return (
-    <div>
-      <div className="movie-container">
-        <img src={poster} alt="" className="movie-img" />
-        <div className="movie-title">
-          <h2>{movie}</h2>
-          <p>
-            <Color rating={rating} />
-          </p>
-        </div>
-        <p className="movie-summary">{summary}</p>
-      </div>
-    </div>
-  );
-}
+
