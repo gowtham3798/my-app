@@ -1,9 +1,16 @@
 import "./styles.css";
+import React from 'react'
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { useState } from "react";
-
-
+import IconButton from '@mui/material/IconButton';
+import MailIcon from '@mui/icons-material/Mail';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import { Switch, Route, Link } from "react-router-dom";
+import { MovieList } from "./MovieList";
+import { Counter } from "./Counter";
+// import { Route,BrowserRouter as Router } from "react-router-dom";
 
 export default function App() {
   const INITIAL_STATE = [
@@ -132,8 +139,21 @@ export default function App() {
   console.log([...movieList]);
 
   return (
+    
     <div className="App">
-      <h1 className="hea">MOVIES</h1>
+<div>
+  <nav>
+<Link to="/">Home</Link>
+</nav>
+<Switch>
+<Route path="/">
+          <Home />
+        </Route>
+</Switch>
+</div>
+
+<h1 className="hea">MOVIES</h1>
+     
     <div className="add-movie-form">
       <TextField id="standard-basic" label="movie title" variant="standard" 
         value={movie}
@@ -169,44 +189,24 @@ export default function App() {
          UPLOAD
         </Button>
       </div>
-      {/* <MovieList movies={movies} /> */}
-      <MovieList movies={movieList} setList={setList} />
-      {/* <MovieList movies={remaining} /> */}
-      {/* console.log([...movieList]) */}
+      <MovieList movies={movieList} setList={setList} /> 
+     
+     
     </div>
   );
 }
 
-function MovieList({ movies, setList }) {
+function Home() {
   return (
-    <div className="movie-list">
-      {movies.map(({ movie, poster, rating, summary }, index) => (
-        <Movie
-          deleteButton={
-            <Button variant="outlined" color="error"  size="small"
-              onClick={() => {
-                const deleteindex = index;
-                const remaining = movies.filter(
-                  (mv, ind) => deleteindex !== ind
-                );
-                console.log(movies, remaining);
-                setList(remaining);
-              }}
-            >
-              delete
-            </Button>
-          }
-          poster={poster}
-          movie={movie}
-          rating={rating}
-          summary={summary}
-        />
-      ))}
+    <div>
+      <h2>Home, Welcome All!!!</h2>
+
     </div>
   );
 }
 
-function Movie({ movie, poster, rating, summary, deleteButton }) {
+
+export function Movie({ movie, poster, rating, summary, deleteButton }) {
   const [show, setShow] = useState(false);
   const a = { display: show ? "block" : "none" };
   return (
@@ -220,7 +220,7 @@ function Movie({ movie, poster, rating, summary, deleteButton }) {
               <Color rating={rating} />
             </p>
           </div>
-          <Button variant="outlined" onClick={() => setShow(!show)}>Toggled summary</Button>
+          <IconButton aria-label="delete" onClick={() => setShow(!show)}>{!show ?<ExpandMoreIcon/>: <ExpandLessIcon />}</IconButton>
           <p style={a} className="movie-summary">
             {summary}
           </p>
@@ -231,33 +231,6 @@ function Movie({ movie, poster, rating, summary, deleteButton }) {
             {deleteButton}</div>
             
         </div>
-      </div>
-    </div>
-  );
-}
-
-function Counter() {
-  const [like, setLike] = useState(0);
-  const [dislike, setLike1] = useState(0);
-  return (
-    <div className="counter-container">
-      <div>
-      <Button variant="contained" onClick={() => setLike(like + 1)}>
-          {" "}
-          <span role="img" aria-label="emo">
-            👍
-          </span>
-          {like}
-        </Button>
-      </div>
-      <div>
-        <Button variant="contained"  onClick={() => setLike1(dislike + 1)}>
-          {" "}
-          <span role="img" aria-label="emo">
-            👎
-          </span>
-          {dislike}
-        </Button>
       </div>
     </div>
   );
