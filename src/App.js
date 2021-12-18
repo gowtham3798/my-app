@@ -141,67 +141,80 @@ export default function App() {
   return (
     
     <div className="App">
+        <h1 className="hea">MOVIES</h1>
 <div>
   <nav>
-<Link to="/">Home</Link>
+<Link to="home">Home</Link>
+<Link to="/movies">Movies</Link>
+<Link to="/counter">Count</Link>
+<Link to="/newform">Add Movie</Link>
 </nav>
+<hr />
+<div>
+  <Switch>
+  <Route path="/home">
+    <Home />
+  </Route></Switch>
+</div>
 <Switch>
-<Route path="/">
-          <Home />
+
+      <Route path="/counter">
+          <Counter />
         </Route>
 </Switch>
 </div>
 
-<h1 className="hea">MOVIES</h1>
-     
-    <div className="add-movie-form">
-      <TextField id="standard-basic" label="movie title" variant="standard" 
-        value={movie}
-        onChange={(event) => setName(event.target.value)}
-       
-      />
-     <TextField id="standard-basic" label="image url" variant="standard"
-       
-        value={poster}
-        onChange={(event) => setPoster(event.target.value)}
-      />
-      <TextField id="standard-basic" label="imdb rating" variant="standard"
-        
-        value={rating}
-        onChange={(event) => setRating(event.target.value)}
-      />
-      <TextField id="standard-basic" label="summary" variant="standard"
-        value={summary}
-        onChange={(event) => setSummary(event.target.value)}
-        
-      />
-        <Button variant="contained"
-          onClick={() => {
-            const newMovie = {
-              movie,
-              poster,
-              rating,
-              summary
-            };
-            setList([...movieList, newMovie]);
-          }}
-        >
-         UPLOAD
-        </Button>
+
+
+<div>
+     <Route path="/newform">
+    {addmovie()}
+      </Route>
       </div>
+  
+      <Route path="/movies">
       <MovieList movies={movieList} setList={setList} /> 
-     
+     </Route>
      
     </div>
   );
+
+  function addmovie() {
+    return <div className="add-movie-form">
+      <TextField id="standard-basic" label="movie title" variant="standard"
+        value={movie}
+        onChange={(event) => setName(event.target.value)} />
+      <TextField id="standard-basic" label="image url" variant="standard"
+
+        value={poster}
+        onChange={(event) => setPoster(event.target.value)} />
+      <TextField id="standard-basic" label="imdb rating" variant="standard"
+
+        value={rating}
+        onChange={(event) => setRating(event.target.value)} />
+      <TextField id="standard-basic" label="summary" variant="standard"
+        value={summary}
+        onChange={(event) => setSummary(event.target.value)} />
+      <Button variant="contained"
+        onClick={() => {
+          const newMovie = {
+            movie,
+            poster,
+            rating,
+            summary
+          };
+          setList([...movieList, newMovie]);
+        } }
+      >
+        UPLOAD
+      </Button>
+    </div>;
+  }
 }
 
-function Home() {
-  return (
-    <div>
-      <h2>Home, Welcome All!!!</h2>
-
-    </div>
+function Home(){
+  return(
+    "Welcome to the movie collection"
   );
 }
 

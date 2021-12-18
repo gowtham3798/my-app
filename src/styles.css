@@ -1,7 +1,10 @@
-/* .App {
-  font-family: sans-serif;
+.App {
+  font-family: Comic Sans MS;
+  /* text-align: center; */
+}
+.hea{
   text-align: center;
-} */
+}
 body {
   margin: 24px;
   background: white;
@@ -73,4 +76,10 @@ body {
 
 .add-movie-form > button {
   margin-top: 0.5rem;
+}
+ 
+nav{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
