@@ -99,7 +99,7 @@ export default function App() {
       rating: 8,
       summary: `Remy, a rat, aspires to become a renowned French chef. However, he fails to realise that people despise rodents and will never enjoy a meal cooked by him.`
     },
-
+{},
     {
       movie: 96,
       poster:
