@@ -1,85 +1,79 @@
 .App {
-  font-family: Comic Sans MS;
-  /* text-align: center; */
-}
-.hea{
-  text-align: center;
-}
-body {
-  margin: 24px;
-  background: white;
-}
-.movie-list {
-  /* grid-template-rows: repeat(auto-fit,minmax(12rem,2fr)); */
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem;
-}
-.movie-container {
-  background: whitesmoke;
-  transition: transform 0.2s ease;
-  overflow: hidden;
-  width: 15rem;
-  box-shadow: 0 4px 6px 0 rgba(22, 22, 26, 0.18);
-  border-radius: 0;
-  border: 0;
-  margin: 2rem;
-  padding: 1rem;
-}
+    /* font-family: Comic Sans MS; */
+    height: 680px;
+    border: 1px solid black;
+    border-radius: 4rem;
+    background: #007bff;
+    background: linear-gradient(to right, #0062E6, #33AEFF);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 0.25rem;
+  
+    /* text-align: center; */
+  }
+  .container {
+    padding: 80px;
+    margin-left: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 0.25rem;
 
-.movie-img {
-  height: 18rem;
-  width: 15rem;
-  object-fit: cover;
-}
+    
+    
+  }
+  .container1 {
+    width: 300px;
+    height: 640px;
 
-.movie-container:hover {
-  transform: scale(1.1);
-}
+  }
 
-.movie-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 12px;
-}
+  .card:hover {
+    transform: scale(1.1);
+  }
 
-.movie-synopsis {
-  padding: 0;
-  margin: 0;
+  .card{
+    
+    border-radius: 1rem;
+    transition: transform 0.2s ease;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+  }
 
-  /* padding: 0rem; */
-}
+  .title{
+      text-align: center;
+  }
 
-.counter-container {
-  display: flex;
-  margin-top: 5px;
-  gap: 0.5rem;
-}
-
-.add-movie-form {
-  color: white;
-  background: #8aa899;
-  width: 12rem;
-  display: flex;
-  flex-basis: fit-content;
-  padding: 1rem;
-  border: 1px solid black;
-  margin-top: rem;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.delete {
-  margin-top: 1rem;
-}
-
-.add-movie-form > button {
-  margin-top: 0.5rem;
-}
+  .title>p>strong{
+      font-size:30px ;
+  }
+  .but{
+     
+    display: grid;
+    margin: 10px;
  
-nav{
-  display: flex;
-  flex-direction: column;
-  text-align: center;
+    justify-content: center;
 }
+Button{
+    width: 250px;
+    height: 50px;
+     opacity: 0.7;
+  
+   }
+ 
+   .container1.card:hover .but {
+    opacity: 1;
+  }
+
+  .text-muted {
+    opacity: 0.7;
+  }
+
+  @media (min-width: 992px) {
+    .App {
+      margin-top: -.25rem;
+      margin-bottom: .25rem;
+      box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.3);
+    }
+}
+
+
+  
