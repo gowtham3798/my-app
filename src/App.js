@@ -235,6 +235,8 @@ if(board[a] !== null && board[a] === board[b] && board[a]===board[c]){
       return null;
       }
       const winner = decideWinner(board);
+       const [hide,setHide]=useState(false);
+    const style = {display:(hide)?"none":"block"};
     
     return(
       <div className="tictac">
@@ -243,8 +245,17 @@ if(board[a] !== null && board[a] === board[b] && board[a]===board[c]){
     {board.map((val, index) => (
       <GameBox val={val} onPlayerClick={()=> handleClick(index)}/>))}
       <div className="restart">
-       <Button onClick={() => window.location.reload(false)}><IconButton aria-label="delete" color="primary"><RestartAltIcon />
-          </IconButton>Restart</Button></div>
+      {winner ? <Button onClick={() =>setBoard([null,null,null,null,null,null,null,null,null])}><IconButton aria-label="delete" color="primary"><RestartAltIcon />
+          </IconButton>Restart</Button> : " "}</div>
+          <div>
+      
+         <button  onClick={()=>{setXTurn(true);setHide(true)}}>X</button>
+         <button  onClick={()=>{setXTurn(false);setHide(true)}}>O</button>
+         </div>
+    
+          <div>
+          {!winner && isXTurn==true ? <Button onClick={() => setXTurn(true)}>X turn</Button> : <Button onClick={() => setXTurn(!true)}>O turn</Button>} 
+          </div>
     </div>
    
     {winner ?   <p>The Winner is {winner} <Confetti
