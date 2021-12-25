@@ -8,7 +8,7 @@ function App() {
     { status: false, task: "Create Theme" },
     { status: false, task: "Work on WordPress" },
     { status: false, task: "Organize office main department" },
-    { status: false, task: "Error solve in HTML template" }
+    { status: false, task: "Error solve in HTML template." }
   ];
 
   
