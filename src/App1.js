@@ -1,79 +1,208 @@
 import "./styles1.css";
-import React from "react";
-import Button from "@mui/material/Button";
-import Card from '@mui/material/Card';
-// import TextField from '@mui/material/TextField';
-// import { useState } from "react";
-// import IconButton from '@mui/material/IconButton';
-// import MailIcon from '@mui/icons-material/Mail';
-// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-// import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-// import { Switch, Route, Link } from "react-router-dom";
-// import { MovieList } from "./MovieList";
-// import { Counter } from "./Counter";
-// import { Route,BrowserRouter as Router } from "react-router-dom";
+import { useState } from "react";
+import React from 'react'
 
-export default function App() {
+function App() {
+ 
+  const givenTasks = [
+    { status: false, task: "Create Theme" },
+    { status: false, task: "Work on WordPress" },
+    { status: false, task: "Organize office main department" },
+    { status: false, task: "Error solve in HTML template" }
+  ];
+
+  
+  const [show, setShow] = useState(true);
+  const [show1, setShow1] = useState(false);
+  const [show2, setshow2] = useState(false);
+  
+  const [taskList, addTask] = useState(givenTasks);
+  const [typedTask, adding] = useState({ status: false });
+
+
+
+  function TaskDisplay({ status, task, type }) {
+    const [strike, striking] = useState(status);
+    const style = { display: strike ? "none" : "block" };
+    const style1 = { display: strike ? "block" : "none" };
+
+  
+    return (
+      <div className="tasks">
+        {type === "filter" ? (
+          status === false ? (
+            <div style={style}>
+              <input
+                type="checkbox"
+                onClick={() => {
+                  striking(!strike);
+                  for (let i of taskList) {
+                    if (i.task === task) {
+                      i.status = true;
+                     
+                    }
+                  }
+                }}
+              />
+              <span>{task}</span>
+            </div>
+          ) : status === true ? (
+            <div style={style1}>
+              <input
+                type="checkbox"
+                defaultChecked
+                onClick={() => {
+                  striking(!strike);
+                  for (let i of taskList) {
+                    if (i.task === task) {
+                      i.status = false;
+                    }
+                  }
+                }}
+              />
+              <span>
+                <strike>{task}</strike>
+              </span>
+            </div>
+          ) : (
+            ""
+          )
+        ) : status ? (
+          <div>
+            <input
+              type="checkbox"
+              defaultChecked
+              onClick={() => {
+                striking(!strike);
+                for (let i of taskList) {
+                  if (i.task === task) {
+                    i.status = !strike;
+                  }
+                }
+              }}
+            />
+            {strike ? (
+              <span>
+                <strike>{task}</strike>
+              </span>
+            ) : (
+              <span>{task}</span>
+            )}
+            
+          </div>
+        ) : (
+          <div>
+            <input
+              type="checkbox"
+              onClick={() => {
+                striking(!strike);
+                for (let i of taskList) {
+                  if (i.task === task) {
+                    i.status = !strike;
+                  }
+                }
+              }}
+            />
+            {strike ? (
+              <span>
+                <strike>{task}</strike>
+              </span>
+            ) : (
+              <span>{task}</span>
+            )}
+           
+          </div>
+        )}
+      </div>
+    );
+  }
+
   return (
     <div className="App">
-      <div className="container">
-        <div className="container1">
-          <Card className="card">
-              <div className="title">
-            <h5 className="text-muted">FREE</h5>
-            <p><strong>$0</strong><sub>/month</sub></p></div>
-            <hr />
-            <p><strong>✔ </strong>Single User</p>
-            <p><strong>✔ </strong>5GB storage</p>
-            <p><strong>✔ </strong>Unlimited Public Projects</p>
-            <p><strong>✔ </strong>Community Access</p>
-            <p className="text-muted"><strong>✕ </strong>Unlimited Private Projects</p>
-            <p className="text-muted"><strong>✕ </strong>Dedicated Phone Support</p>
-            <p className="text-muted"><strong>✕ </strong>Free Subdomain</p>
-            <p className="text-muted"><strong>✕ </strong>Monthly Status Reports</p>
-            <div className="but"><Button variant="contained">Button</Button>
-           </div>
-          </Card>
+      <h1>TODO List</h1>
+      <div className="addTask-grid">
+        <div className="addTask">
+          <input
+            placeholder="Enter the TASK"
+            onChange={(event) =>
+              adding({ ...typedTask, task: event.target.value })
+            }
+          />
+          <button
+            className="button"
+            onClick={() => {
+              typedTask.task !== undefined
+                ? addTask([...taskList, typedTask])
+                : alert("Enter task");
+            }}
+          >
+            Add
+          </button>
         </div>
-        <div className="container1">
-          <Card className="card">
-              <div className="title">
-            <h5 className="text-muted">PLUS</h5>
-            <p><strong>$9</strong><sub>/month</sub></p>
-            </div>
-            <hr />
-            <p><strong>✔ </strong>5 Users</p>
-            <p><strong>✔ </strong>50GB Storage</p>
-            <p><strong>✔ </strong>Unlimited Public Projects</p>
-            <p><strong>✔ </strong>Community Access</p>
-            <p><strong>✔ </strong>Unlimited Private Projects</p>
-            <p><strong>✔ </strong>Dedicated Phone Support</p>
-            <p><strong>✔ </strong>Free Subdomain </p>
-            <p className="text-muted"><strong>✕ </strong>Monthly Status Reports</p>
-            <div className="but"><Button variant="contained">Button</Button>
-           </div>
-          </Card>
+      </div>
+      <div >
+        <div className="tasktodo">
+          <button
+            onClick={() => {
+              setShow(true);
+              setShow1(false);
+              setshow2(false);
+            }}
+          >
+            All
+          </button>
+          <button
+            onClick={() => {
+              setShow(false);
+              setShow1(true);
+              setshow2(false);
+            }}
+          >
+            Active
+          </button>
+          <button
+            onClick={() => {
+              setShow(false);
+              setShow1(false);
+              setshow2(true);
+            }}
+          >
+            Completed
+          </button>
         </div>
-        <div className="container1">
-          <Card className="card">
-              <div className="title">
-            <h5 className="text-muted">PRO</h5>
-            <p><strong>$49</strong><sub>/month</sub></p>
-            </div>
-            <hr />
-            <p><strong>✔ </strong>Unlimited Users</p>
-            <p><strong>✔ </strong>150GB Storage</p>
-            <p><strong>✔ </strong>Unlimited Public Projects</p>
-            <p><strong>✔ </strong>Community Access</p>
-            <p><strong>✔ </strong>Unlimited Private Projects</p>
-            <p><strong>✔ </strong>Dedicated Phone Support</p>
-            <p><strong>✔ </strong>Free Subdomain</p>
-            <p><strong>✔ </strong>Monthly Status Reports</p>
-            <div className="but"><Button variant="contained">Button</Button>
-           </div>
-          </Card>
-        </div>
+        {show
+          ? taskList.map(({ status, task }, index) => (
+              <TaskDisplay
+                key={index}
+                id={index}
+                status={status}
+                task={task}
+                remove={addTask}
+                type="All"
+              />
+            ))
+          : ""}
+        {show1
+          ? taskList
+              .filter((task) => {
+                return task.status === false;
+              })
+              .map(({ task, status }, index) => (
+                <TaskDisplay key={index} status={status} task={task} type="filter" />
+              ))
+          : ""}
+        {show2
+          ? taskList
+              .filter((task) => {
+                return task.status === true;
+              })
+              .map(({ task, status }, index) => (
+                <TaskDisplay key={index} status={status} task={task} type="filter" />
+              ))
+          : ""}
       </div>
     </div>
   );
 }
+
+export default App;

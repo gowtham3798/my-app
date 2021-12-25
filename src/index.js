@@ -7,15 +7,15 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 
 
-import App1 from "./App1";
+import App from "./App1";
 const rootElement = document.getElementById("root");
 ReactDOM.render(
-  <StrictMode>
+  // <StrictMode>
   <Router>
 
-    <App1 />
+    <App />
   </Router>
   
-  </StrictMode>,
-  rootElement
+  // </StrictMode>,
+  ,rootElement
 );
