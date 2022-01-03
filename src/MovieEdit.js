@@ -29,8 +29,7 @@ export function MovieEdit() {
     return(
      
       movieinfo ?  <UpdatedMovies movieinfo={movieinfo} name1={movieinfo.movie} image1={movieinfo.poster} trailer1={movieinfo.trailer} rating1={movieinfo.rating} summary1={movieinfo.summary}/> : " "
-    
-    )
+      )
    
   }
 

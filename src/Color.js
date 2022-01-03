@@ -21,3 +21,4 @@ export function Color({ rating }) {
     </div>
   );
 }
+

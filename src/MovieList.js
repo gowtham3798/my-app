@@ -3,7 +3,6 @@ import IconButton from '@mui/material/IconButton';
 import { Movie } from "./App";
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-
 import { useHistory} from "react-router-dom";
 import EditIcon from '@mui/icons-material/Edit';
 export function MovieList() {
