@@ -55,6 +55,9 @@ export default function App() {
 
   // const theme = unstable_createMuiStrictModeTheme();
 
+  var arr=[]
+
+  // console.log(movie)
   return (
     <ThemeProvider theme={theme}>
       <Paper elevation={2} />
