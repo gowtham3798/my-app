@@ -3,14 +3,32 @@
   
 }
 
-.hea{
-  text-align: center;
-  color:white;
+@keyframes kf-color-mix {
+  0% { color: red }
+  100% { color: blue }
 }
+
+.hea{
+  font-family:Impact, fantasy;
+  text-align: center;
+  height: 30px;
+  animation: kf-color-mix 1s linear infinite alternate;
+  color: currentColor;
+}
+
+
 body {
   margin: 24px;
   background: #353636;
+  background-image: url("https://s3.envato.com/files/240883441/01_preview1.jpg");
+  /* height: 100vh; */
+    /* background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative; */
 }
+
+
 
 .home{
  font-size:  40px ;
@@ -22,7 +40,7 @@ body {
 
 
 .movie-list {
-  background-image: url("https://previews.123rf.com/images/onyxprj/onyxprj1810/onyxprj181001446/109434141-cinema-pattern-seamless-background-with-symbols-of-cinema-and-films-production-vector-cinema-product.jpg");
+  /* background-image: url("https://static.statusqueen.com/desktopwallpaper/thumbnail/gaming_wallpaper-89.jpg"); */
   /* height: 300vh; */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -86,15 +104,23 @@ body {
 }
 
 .add-movie-form {
-  /* color: white; */
   background: #353636;
-  /* width: 15rem; */
   display: flex;
   flex-basis: fit-content;
   padding: 1rem;
- 
   flex-direction: column;
   align-items: flex-start;
+}
+.editmovie-form {
+  background: #353636;
+  display: flex;
+  flex-basis: fit-content;
+  padding: 1rem;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.editmovie-form > button {
+  margin-top: 0.5rem;
 }
 
 .delete {
@@ -150,14 +176,23 @@ nav{
     justify-content: center;
   }
  
-  .add-movie-form {
-    background-image: url("https://previews.123rf.com/images/onyxprj/onyxprj1810/onyxprj181001446/109434141-cinema-pattern-seamless-background-with-symbols-of-cinema-and-films-production-vector-cinema-product.jpg");
+  .editmovie-form{
+    background-image: url("https://wallpaper.dog/large/9990.jpg");
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    opacity: 1.5;
+   }
+
+  .add-movie-form {
+    background-image: url("https://wallpaperaccess.com/full/7445.jpg");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  
   }
 
   .menu-bar {
@@ -168,6 +203,7 @@ nav{
 
 
   .Iam {
+    
       padding:  10%;
       margin-left: 30%;
       margin-top: 6%;

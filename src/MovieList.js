@@ -11,14 +11,14 @@ export function MovieList() {
   const getMovies=()=>{
     
     
-    fetch("https://61c412e3f1af4a0017d99283.mockapi.io/movies",{method:'GET'})
+    fetch("https://61c412e3f1af4a0017d99283.mockapi.io/games",{method:'GET'})
     .then(response => response.json())
     .then(data => setList(data));
     
   }
   
   const deleteMovie=(id) => {
-    fetch(`https://61c412e3f1af4a0017d99283.mockapi.io/movies/${id}`,
+    fetch(`https://61c412e3f1af4a0017d99283.mockapi.io/games/${id}`,
     {method:'DELETE'})
     .then(response => response.json())
     .then(() => getMovies())} ;

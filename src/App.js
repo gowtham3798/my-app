@@ -63,7 +63,7 @@ export default function App() {
       <Paper elevation={2} />
     <div className="App">
   
-        <h1 className="hea">MOVIES</h1>
+        <h1 className="hea">GAMING</h1>
 <div>
 <AppBar position="static" >
  <nav className="menu-bar">
@@ -74,19 +74,19 @@ export default function App() {
 </Toolbar>
 <Toolbar>
   <Button color="inherit" onClick={() => history.push("/movies")}>
-    Movies
+    Games
   </Button>
 </Toolbar>
-<Toolbar>
+{/* <Toolbar>
   <Button color="inherit" onClick={() => history.push("/films")}>
     Films
   </Button>
-</Toolbar>
-<Toolbar>
+</Toolbar> */}
+{/* <Toolbar>
   <Button color="inherit" onClick={() => history.push("/counter")}>
     Counter
   </Button>
-</Toolbar>
+</Toolbar> */}
 <Toolbar>
   <Button color="inherit" onClick={() => history.push("/newform")}>
     Add
@@ -266,7 +266,7 @@ if(board[a] !== null && board[a] === board[b] && board[a]===board[c]){
     const addMovie= (newMovie) => {
       
 
-      fetch("https://61c412e3f1af4a0017d99283.mockapi.io/movies",
+      fetch("https://61c412e3f1af4a0017d99283.mockapi.io/games",
       {method:'POST',
       body:JSON.stringify(newMovie),
       headers:{
@@ -278,7 +278,7 @@ if(board[a] !== null && board[a] === board[b] && board[a]===board[c]){
     
     
          const formValidationSchema=yup.object({
-           movie:yup.string().min(5 , "a movie without name...Nah🧐").required('Required'),
+           movie:yup.string().min(5 , "a game without name...Nah🧐").required('Required'),
            poster:yup.string().min(5 , "why not fill this poster").required('Required'),
            rating:yup.number().min(1, "Need a better rating").max(10,"").required('Required'),
            summary:yup.string().min(20 , "why not fill this summary").required('Required'),
@@ -298,14 +298,14 @@ if(board[a] !== null && board[a] === board[b] && board[a]===board[c]){
     
     return <div className="add-movie-form">
        <form onSubmit={formik.handleSubmit}>
-      <TextField label="movie title" variant="standard" fullWidth sx={{ m: 1 }}
+      <TextField label="game title" variant="standard" fullWidth sx={{ m: 1 }}
         value={formik.values.movie}
         id="movie"
         name="movie" 
         type="text"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        placeholder="Enter movie name"
+        placeholder="Enter game name"
         error={formik.touched.movie && formik.errors.movie}
         helperText={formik.touched.movie && formik.errors.movie ? formik.errors.movie : " "} />
 
@@ -410,7 +410,7 @@ function MovieDetails(){
   const[movieinfo,setMovie] = useState([])
   console.log(movieinfo)
 const getinfo =() =>{
-  fetch(`https://61c412e3f1af4a0017d99283.mockapi.io/movies/${id}`,{method : "GET"})
+  fetch(`https://61c412e3f1af4a0017d99283.mockapi.io/games/${id}`,{method : "GET"})
   .then((response) => response.json())
   .then((data) => setMovie(data));}
 
@@ -446,7 +446,7 @@ function Home(){
     welcome<br /> 
     to<br />
     my<br />
-    movie<br />
+    GAMING<br />
     collections⭐
     </div>
 </b>

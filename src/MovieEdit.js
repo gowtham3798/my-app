@@ -18,7 +18,7 @@ export function MovieEdit() {
     console.log(id)
     const[movieinfo,setMovie] = useState()
   const getinfo =() =>{
-    fetch(`https://61c412e3f1af4a0017d99283.mockapi.io/movies/${id}`,{method : "GET"})
+    fetch(`https://61c412e3f1af4a0017d99283.mockapi.io/games/${id}`,{method : "GET"})
     .then((response) => response.json())
     .then((data) => setMovie(data));}
   
@@ -41,7 +41,7 @@ const history = useHistory();
 
 const editMovie= (updatedMovie) => {
   
-  fetch(`https://61c412e3f1af4a0017d99283.mockapi.io/movies/${movieinfo.id}`,
+  fetch(`https://61c412e3f1af4a0017d99283.mockapi.io/games/${movieinfo.id}`,
   {method:'PUT',
   body:JSON.stringify(updatedMovie),
   headers:{
@@ -52,7 +52,7 @@ const editMovie= (updatedMovie) => {
 }
 
 const formValidationSchema=yup.object({
-  movie:yup.string().min(5 , "a movie without name...Nah🧐").required('Required'),
+  movie:yup.string().min(5 , "a game without name...Nah🧐").required('Required'),
   poster:yup.string().min(5 , "why not fill this poster").required('Required'),
   rating:yup.number().min(1, "Need a better rating").max(10,"").required('Required'),
   summary:yup.string().min(20 , "why not fill this summary").required('Required'),
@@ -68,16 +68,17 @@ onSubmit :(upadatedMovie) => {
 }})
 
 
-    return <div className="add-movie-form">
+    return <div className="editmovie-form">
+    
         <form onSubmit={formik.handleSubmit}>
-      <TextField label="movie title" variant="standard" fullWidth sx={{ m: 1 }}
+      <TextField label="game title" variant="standard" fullWidth sx={{ m: 1 }}
         value={formik.values.movie}
         id="movie"
         name="movie" 
         type="text"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        placeholder="Enter movie name"
+        placeholder="Enter game name"
         error={formik.touched.movie && formik.errors.movie}
         helperText={formik.touched.movie && formik.errors.movie ? formik.errors.movie : " "} />
 
