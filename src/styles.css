@@ -1,25 +1,20 @@
 .App {
-  font-family: Comic Sans MS;
-  /* text-align: center; */
+  background: black;
+  font-family: "Montserrat", sans-serif;
+  background-image: url("https://cdn3.f-cdn.com/contestentries/1600316/36114675/5d7d05a86d10a_thumb900.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative; 
 }
-.hea{
-  text-align: center;
-}
-body {
-  margin: 24px;
-  background: white;
-}
-.movie-list {
-  /* grid-template-rows: repeat(auto-fit,minmax(12rem,2fr)); */
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem;
-}
-.movie-container {
+
+
+.items {
+  
   background: whitesmoke;
   transition: transform 0.2s ease;
   overflow: hidden;
-  width: 15rem;
+  width: 18rem;
   box-shadow: 0 4px 6px 0 rgba(22, 22, 26, 0.18);
   border-radius: 0;
   border: 0;
@@ -27,59 +22,123 @@ body {
   padding: 1rem;
 }
 
-.movie-img {
-  height: 18rem;
-  width: 15rem;
-  object-fit: cover;
-}
-
-.movie-container:hover {
+.items:hover {
   transform: scale(1.1);
 }
 
-.movie-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 12px;
+
+.movie-img {
+  height: 21rem;
+  width: 18rem;
+  object-fit: cover;
 }
 
-.movie-synopsis {
-  padding: 0;
-  margin: 0;
-
-  /* padding: 0rem; */
+.img{
+  height:100vh;
+  background-image: url("https://t4.ftcdn.net/jpg/02/80/76/25/360_F_280762521_j1sQEgHTmtfoUcAEgoPt1gdBu6yinZQN.jpg");
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
 
-.counter-container {
+
+.menu-bar {
+  
   display: flex;
-  margin-top: 5px;
-  gap: 0.5rem;
+  flex-direction: row;
+  /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 0.5rem; */
 }
 
-.add-movie-form {
-  color: white;
-  background: #8aa899;
-  width: 12rem;
-  display: flex;
-  flex-basis: fit-content;
+.pizza-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+.home-page{
+  cursor: pointer;
+}
+
+.App {
+  margin: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  justify-items: stretch;
+  align-items: baseline;
+  border: 6px double white;
+  border-radius: 2rem;
   padding: 1rem;
-  border: 1px solid black;
-  margin-top: rem;
-  flex-direction: column;
-  align-items: flex-start;
+  overflow: auto;
+  color: white;
+  max-width: 65rem;
+}
+input {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+button {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid white;
 }
 
-.delete {
-  margin-top: 1rem;
+ h1{
+   color: rgb(225, 230, 225);
+   text-align: center;
+ }
+
+.status-and-tasks-grid {
+  border-radius: 1rem;
+  border-right: 0px solid white;
+  border-left: px solid white;
+  padding: 0rem 1rem 1rem 1rem;
+}
+.addTask {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: end;
+  padding-bottom: 2rem;
+  margin: 0rem 1rem 0rem 0rem;
+}
+.addTask > button {
+  background: green;
+  color: white;
 }
 
-.add-movie-form > button {
-  margin-top: 0.5rem;
+.taskStatus {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+  justify-content: start;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
 }
- 
-nav{
-  display: flex;
-  flex-direction: column;
-  text-align: center;
+.taskStatus > button:nth-child(1) {
+  background: gold;
+  color: black;
+}
+.taskStatus > button:nth-child(2) {
+  background: red;
+  color: white;
+}
+.taskStatus > button:nth-child(3) {
+  background: rgb(153, 102, 54);
+  color: rgb(255, 255, 255);
+}
+.taskStatus > button:nth-child(4) {
+  background: rgb(9, 67, 100);
+  color: white;
+}
+.taskStatus > button:nth-child(5) {
+  background: rgb(0, 128, 128);
+  color: white;
+}
+.taskStatus > button:nth-child(6) {
+  background: green;
+  color: white;
+}
+.tasks {
+  padding: 0rem 0rem 1rem 0rem;
 }
