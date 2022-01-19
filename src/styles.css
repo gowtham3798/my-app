@@ -62,6 +62,20 @@
   cursor: pointer;
 }
 
+.home-page{
+  display: flex;
+  flex-flow: column;
+  color: white;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: flex-end;
+}
+
+
+
+
+
 .App {
   margin: 3rem;
   display: grid;

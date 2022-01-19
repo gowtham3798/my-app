@@ -7,7 +7,9 @@ import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import { Menu } from "./Menu";
 import {CustomizePizza} from "./CustomizePizza"
+import HomePage from "./components/HomePage";
 
+import Hero from "./components/Hero";
 
 export default function App() {
     const [pizzaList,setList] = useState([]);
@@ -34,12 +36,17 @@ console.log(pizzaList);
       Customize
       </Button>
       </Toolbar>
+      <Toolbar>
+      <Button color="inherit" onClick={() => history.push("/orders")}>
+      Place Order
+      </Button>
+      </Toolbar>
       </nav>
     </AppBar>
 
     <Switch>
       <Route exact path="/">
-        <Home />
+      <Hero />
       </Route>
       <Route path="/menu">
         <Menu pizzas={pizzaList} setList={setList}/>
@@ -47,17 +54,16 @@ console.log(pizzaList);
       <Route path="/customize">
         <CustomizePizza />
       </Route>
+      <Route path="/orders">
+        <div>
+        <link
+          rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        />
+      <HomePage />
+        </div>
+      </Route>
     </Switch>
-    </div>
-  )
-}
-
-function Home(){
-      const history = useHistory();
-  return (
-    <div className="home-page">
-      <h4 onClick={() => (history.push(`/customize`))}>Customize Pizza</h4>
-      <h4 onClick={() => (history.push(`/menu`))}>Explore our Menu</h4>
     </div>
   )
 }
@@ -70,8 +76,7 @@ export function Pizzas({name,image,summary,id}){
             <img src={image} className="movie-img" />
             <p >{summary}</p>
         </div>
-        <Button variant="contained">ADD</Button>
+        
         </div>
     )
 }
-

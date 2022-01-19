@@ -7,7 +7,7 @@ export function Menu() {
     const [pizzas,setList] = useState([]);
 
     useEffect(() =>{
-      fetch(`${API}/pizza`,{method: "GET"})
+      fetch(`${API}`,{method: "GET"})
       .then(response => response.json())
       .then(data => setList(data))
     })
