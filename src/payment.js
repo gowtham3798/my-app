@@ -31,7 +31,7 @@ function Payment() {
          alert('Razorpay SDK failed to load. Are you online?')
        }
 
-     const data = await fetch('http://localhost:4000/liverazorpay',{method: 'POST'})
+     const data = await fetch('https://razorpay21.herokuapp.com/liverazorpay',{method: 'POST'})
      .then((t) => t.json())
 
      const options = {
