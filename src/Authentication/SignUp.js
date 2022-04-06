@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-// import {useHistory} from "react-router-dom";
+import './Login.css'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import {useFormik} from "formik";
@@ -10,18 +10,28 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
 export default function SignUp() {
-  const [name,setName] = useState('')
-  const[email, setEmail] = useState("")
-  const[password, setPassword] = useState("")
-  const[dateOfBirth , setDateOfBirth] = useState("")
   const history = useHistory();
 
 const Register = async(item) => {
-  // let item = {name,email, password,dateOfBirth}
+
+  item.myself = item;
+  const replacerFunc = () => {
+      const visited = new WeakSet();
+      return (key, value) => {
+        if (typeof value === "object" && value !== null) {
+          if (visited.has(value)) {
+            return;
+          }
+          visited.add(value);
+        }
+        return value;
+      };
+    };
+
   let result = await 
   fetch("https://loginserver21.herokuapp.com/user/signup",{
       method: 'POST',
-      body: JSON.stringify(item),
+      body: JSON.stringify(item,replacerFunc()),
       headers:{
         "Content-Type":'application/json',
         "Accept":'application/json'
@@ -50,10 +60,6 @@ const Register = async(item) => {
     validationSchema : formValidationSchema,
     onSubmit :(item) => {
       console.log("onSubmit",item)
-      setName(item.name)
-      setEmail(item.email)
-      setPassword(item.password)
-      setDateOfBirth(item.dateOfBirth)
       Register(item)
     }
   })
@@ -61,17 +67,16 @@ const Register = async(item) => {
 
   return (
        <div>
-          <Card sx={{ minWidth: 350,minHeight:530,backgroundColor: '#b9b9b9' ,color: 'white' }}className="success-msg">
+          <Card sx={{ minWidth: 350,minHeight:530,backgroundImage:'url("https://cdn5.vectorstock.com/i/1000x1000/20/09/pizza-border-with-black-background-vector-17672009.jpg")',backgroundSize:600,color: 'white' }}className="success-msg">
              <CardContent>
                  <Typography variant="h4" component="div">
                  Create your account
                  </Typography>
               </CardContent>
             <form onSubmit={formik.handleSubmit} >
-                <TextField sx={{ m: 1, width: '35ch' }} variant="outlined"
+                <TextField id="standard-basic" sx={{ m: 1, width: '35ch' }} variant="outlined"
                 label="Username"
                 value={formik.values.name}
-                id='name'
                 name='name'
                 type="text"
                 placeholder="Username"
@@ -84,10 +89,10 @@ const Register = async(item) => {
                 
                 
 
-              <TextField sx={{ m: 1, width: '35ch' }} variant="outlined"
+              <TextField id="standard-basic" sx={{ m: 1, width: '35ch' }} variant="outlined"
                 label="Email"
                 value={formik.values.email}
-                id='email'
+                
                 name='email'
                 type="email"
                 placeholder="Enter your email"
@@ -100,7 +105,7 @@ const Register = async(item) => {
                 <TextField sx={{ m: 1, width: '35ch' }} variant="outlined"
                 label="Password"
                 value={formik.values.password}
-                id='password'
+                id="standard-basic"
                 name='password'
                 type="password"
                 placeholder="Enter your password"
@@ -113,7 +118,7 @@ const Register = async(item) => {
                 
                 <TextField sx={{ m: 1, width: '35ch' }} variant="outlined"
                 value={formik.values.dateOfBirth}
-                id='dateOfBirth'
+                id="standard-basic"
                 name='dateOfBirth'
                 type="date"
                 placeholder="Enter your date of birth"

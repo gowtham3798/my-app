@@ -14,7 +14,7 @@ export default function EmailVerification() {
     const history = useHistory()
   return (
     <div >
-         <Card sx={{ minWidth: 500,minHeight:150,backgroundColor: '#a6a6a6' ,color: 'white' }}className="success-msg">
+         <Card sx={{ minWidth: 500,minHeight:150,backgroundImage:'url("https://cdn5.vectorstock.com/i/1000x1000/20/09/pizza-border-with-black-background-vector-17672009.jpg")',backgroundSize:1000 ,color: 'white' }}className="success-msg">
              <CardContent>
                  <Typography variant="h4" component="div">
                  ✅A verification link has been sent to your account

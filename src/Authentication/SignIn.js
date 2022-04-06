@@ -42,7 +42,7 @@ export default  function SignIn() {
     result =await result.json()
     localStorage.setItem('user-info',JSON.stringify(result))
     if(result.status.includes('SUCCESS')){
-      history.push('https://nervous-chandrasekhar-b288c5.netlify.app/')
+      history.push('/app')
     }
     else {
       history.push('/failed')
@@ -67,7 +67,7 @@ onSubmit :(item) => {
 return(
   <div >
         <form onSubmit={formik.handleSubmit} >
-        <Card sx={{ minWidth: 350,minHeight:400,backgroundColor: '#b9b9b9' ,color: 'white' }}className="success-msg">
+        <Card sx={{ minWidth: 350,minHeight:400,backgroundImage:'url("https://cdn5.vectorstock.com/i/1000x1000/20/09/pizza-border-with-black-background-vector-17672009.jpg")',backgroundSize:'cover',backgroundSize:500,color: 'white' }}className="success-msg">
              <CardContent>
                  <Typography variant="h4" component="div">
                  Hello there,
@@ -77,7 +77,7 @@ return(
                 </Typography>
                  </CardContent>
 
-               <TextField id="standard-basic" label="Email" sx={{ m: 1, width: '35ch' }} variant="outlined"
+               <TextField id="standard-basic" label="Email" sx={{ m: 1, width: '35ch' }} variant="outlined" 
                 value={formik.values.email}
                 name='email'
                 type="email"
@@ -106,7 +106,7 @@ return(
       <Typography variant="body2" color="text.white">
         Do not have an account,
         </Typography>
-           <Typography variant="body2" color="#002884" onClick={() => history.push('/signup')}>Signup here</Typography>
+           <Typography variant="body2" color="red" onClick={() => history.push('/signup')}> <span> Register here</span></Typography>
       </CardContent>
       </Card>
       </form>

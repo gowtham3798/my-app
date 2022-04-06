@@ -19,7 +19,7 @@ const Home = () => {
             <h1 size={27}>
                feel free to explore
             </h1> */}
-            <Card sx={{ minWidth: 650,minHeight:250 ,backgroundColor: '#a6a6a6' ,color: 'white',justifyContent: 'center'}}className="success-msg">
+            <Card sx={{ minWidth: 650,minHeight:250 ,backgroundImage:'url("https://cdn5.vectorstock.com/i/1000x1000/20/09/pizza-border-with-black-background-vector-17672009.jpg")',backgroundSize:'cover' ,color: 'white',justifyContent: 'center',marginTop:0}}className="success-msg">
              <CardContent sx={{marginTop:3}}>
                  <Typography variant="h3" component="div">
                  welcome to our site
@@ -30,8 +30,8 @@ const Home = () => {
              </CardContent>
              <CardActions className="success-msg-btn">
         {/* <Button size="small" onClick={() =>history('/signin')} variant="outlined">Login</Button> */}
-            <Button onClick={() => history.push('/signin')} variant="outlined">Login</Button>
-            <Button onClick={() =>history.push('/signup')} variant="outlined">SignUp</Button>
+            <Button onClick={() => history.push('/signin')} variant="contained">Login</Button>
+            <Button onClick={() =>history.push('/signup')} variant="contained">SignUp</Button>
       </CardActions>
          </Card>
     

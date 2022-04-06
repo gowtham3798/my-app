@@ -1,6 +1,9 @@
-/* body{
-    background: linear-gradient(45deg, black, transparent); 
-} */
+body{
+    /* background: linear-gradient(45deg, black, transparent);  */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("https://i.etsystatic.com/23444619/r/il/a400e6/3006317757/il_fullxfull.3006317757_3yhi.jpg");
+}
 
 
 .signin-flex{
@@ -10,10 +13,16 @@
     flex-wrap: wrap;
 }
 
-.signin-flex:hover{
+.signin-flex span:hover{
    background-color: transparent;
    cursor: pointer;
  }
  
+#standard-basic{
+    color: white;
+}
 
+TextField{
+    color: white;
+}
 

@@ -20,8 +20,8 @@ ReactDOM.render(
   <StrictMode>
   <Router>
   <Provider store={store}>
-     <App />
-     {/* <AuthenticationApp /> */}
+     {/* <App /> */}
+     <AuthenticationApp />
    </Provider>
   </Router>
   

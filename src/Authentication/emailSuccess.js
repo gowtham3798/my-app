@@ -17,7 +17,7 @@ export default function EmailSuccess() {
     <p id='message'>
       Congratulations, your account has been successfully created.
     </p>
-    <Button onClick={() => history.push('/signin')} color="success" id="contBtn">Continue</Button>
+    <Button onClick={() => history.push('/app')} color="success" id="contBtn">Continue</Button>
   </div>
 </div>
   )
