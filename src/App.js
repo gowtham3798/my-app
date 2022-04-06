@@ -7,8 +7,11 @@ import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import { Menu } from "./Menu";
 import {NonVegMenu} from "./NonVeg";
+import {VegMenu} from "./Veg";
+import {Beverage} from "./beverage";
 import {CustomizePizza} from "./CustomizePizza"
 import HomePage from "./components/HomePage";
+import Payment from "./payment";
 
 
 
@@ -17,6 +20,8 @@ import Hero from "./components/Hero";
 export default function App() {
     const [pizzaList,setList] = useState([]);
     const [nonVegList,setNonVegList] = useState([]);
+    const [beverage,setBeverage] = useState([])
+    const [vegList,setVegList] = useState([]);
   const history = useHistory();
 console.log(pizzaList);
 
@@ -65,9 +70,18 @@ console.log(pizzaList);
         <NonVegMenu nonVegPizzas={nonVegList} setNonVegPizzas={setNonVegList}/>
        </Route>
 
+       <Route path="/vegmenu">
+        <VegMenu vegPizzas={vegList} setVegPizzas={setVegList}/>
+       </Route>
+
+       <Route path="/beverage">
+        <Beverage beverages={beverage} setBeverage={setBeverage}/>
+       </Route>
+
       <Route path="/customize">
         <CustomizePizza />
       </Route>
+
       <Route path="/orders">
         <div>
         <link
@@ -77,6 +91,10 @@ console.log(pizzaList);
       <HomePage />
         </div>
       </Route>
+
+      <Route exact path="/payment">
+      <Payment />
+      </Route>
     </Switch>
     </div>
   )
@@ -85,10 +103,35 @@ console.log(pizzaList);
 function PizzaVarities() {
   const history = useHistory();
   return(
-    <div className="items">
+    <div >
+      
+      <div className="pizza-list">
+
+      <div className="items">
             <img src="https://c.ndtvimg.com/2020-07/ds980vng_pizza_625x300_07_July_20.jpg" className='movie-img'/>
-            <h2 onClick={() => history.push('menu')}>Non-veg Pizza</h2>
-          </div>
+            <a href="#Veg"><h2>Veg Pizza</h2></a>
+      </div>
+      <div className="items">
+            <img src="https://c.ndtvimg.com/2020-07/ds980vng_pizza_625x300_07_July_20.jpg" className='movie-img'/>
+            <a href="#NonVeg"><h2>Non-veg Pizza</h2></a>
+      </div>
+      <div className="items">
+            <img src="https://c.ndtvimg.com/2020-07/ds980vng_pizza_625x300_07_July_20.jpg" className='movie-img'/>
+            <a href="#Beverage"><h2>Beverage</h2></a>
+            </div>
+      </div>
+
+            <hr />
+            <h2 style={{textAlign: 'center'}}>Veg Pizzas</h2>
+            <VegMenu />
+            <hr />
+            <h2 style={{textAlign: 'center'}}>Nonveg Pizzas</h2>
+            <NonVegMenu />
+            <hr />
+            <h2 style={{textAlign: 'center'}}>Beverages</h2>
+            <Beverage />
+            
+    </div>
   )
 }
 
@@ -108,6 +151,34 @@ export function Pizzas({name,image,summary,id}){
 export function NonVegPizzas({name,image,summary,id}){
   return (
       <div className="items">
+      <div>
+          <h2>{name}</h2>
+          <img src={image} className="movie-img" />
+          <p >{summary}</p>
+      </div>
+      
+      </div>
+  )
+}
+
+
+export function VegPizzas({name,image,summary,id}){
+  return (
+      <div className="items">
+      <div>
+          <h2>{name}</h2>
+          <img src={image} className="movie-img" />
+          <p >{summary}</p>
+      </div>
+      
+      </div>
+  )
+}
+
+
+export function Beverages({name,image,summary,id}){
+  return (
+      <div className="items" id="Beverage">
       <div>
           <h2>{name}</h2>
           <img src={image} className="movie-img" />

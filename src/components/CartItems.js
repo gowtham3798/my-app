@@ -16,7 +16,7 @@ class CartItems extends Component {
 
      getdata(){
         console.log(this.props.stateArray);
-        return this.props.stateArray.cart.map((item) => {
+        return this.props.stateArray.cart.map((item,index) => {
             return (
                 <div className="panel panel-primary">
                     <div className="panel-body">
@@ -26,9 +26,9 @@ class CartItems extends Component {
                                     className="col-md-4 col-lg-4 col-sm-4 col-xs-4 col-md-offset-0 col-xs-offset-0 col-lg-offset-0">
                                     <label>{item.fooditem}</label>
                                 </div>
-                                <div
+                                <div 
                                     className="col-md-3 col-lg-3 col-sm-3 col-xs-3 col-md-offset-1 col-xs-offset-1 col-lg-offset-1">
-                                    <label>Price: ₹{item.price} <br/> QTY: {item.qty}</label>
+                                    <label >Price: ₹{item.price} <br/> QTY: {item.qty} </label>
                                 </div>
                                 <div
                                     className="col-md-2 col-lg-2 col-sm-2 col-xs-2 col-md-offset-1 col-xs-offset-1 col-lg-offset-1">

@@ -1,0 +1,19 @@
+body{
+    background: linear-gradient(45deg, black, transparent); 
+}
+
+
+.signin-flex{
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.signin-flex:hover{
+   background-color: transparent;
+   cursor: pointer;
+ }
+ 
+
+

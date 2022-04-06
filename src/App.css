@@ -24,6 +24,10 @@
   color: white;
 }
 
+.App-header > img {
+  width: 12rem;
+}
+
 .App-link {
   color: #61dafb;
 }

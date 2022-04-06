@@ -1,5 +1,6 @@
 import React from "react";
 import {useState } from 'react';
+import './Customize.css'
 
 export function CustomizePizza() {
     const defaultTasks = [
@@ -33,38 +34,36 @@ export function CustomizePizza() {
       ];
     
       const defaultCheese = [
-        { check: false, task: "Mozarella(cheese)" },
-        { check: false, task: "Cottage(cheese)" },
-        { check: false, task: "Parmesan(cheese)" },
-        { check: false, task: "Cheddar(cheese)" },
-        { check: false, task: "Feta(cheese)" }
+        { check: false, task: "Mozarella" },
+        { check: false, task: "Cottage" },
+        { check: false, task: "Parmesan" },
+        { check: false, task: "Cheddar" },
+        { check: false, task: "Feta" }
       ];
     
       const defaultSauce = [
-        { check: false, task: "Pesto(sauce)" },
-        { check: false, task: "Garlic Ranch(sauce)" },
-        { check: false, task: "Creamy Bechamel(sauce)" },
-        { check: false, task: "White Garlic(sauce)" },
-        { check: false, task: "Marinara(sauce)" }
+        { check: false, task: "Pesto" },
+        { check: false, task: "Garlic Ranch" },
+        { check: false, task: "Creamy Bechamel" },
+        { check: false, task: "White Garlic" },
+        { check: false, task: "Marinara" }
       ];
     
       const defaultToppings = [
-        { check: false, task: "Pepperoni(topping)" },
-        { check: false, task: "Mushrooms(topping)" },
-        { check: false, task: "Roasted Red Peppers(topping)" },
-        { check: false, task: "Fresh Tomato(topping)" },
-        { check: false, task: "Sliced Italian(topping)" },
-        { check: false, task: "Fresh Garlic(topping)" },
-        { check: false, task: "Green Peppers(topping)" },
-        { check: false, task: "American Corn(topping)" },
-        { check: false, task: "Gorgonzola(topping)" },
-        { check: false, task: "Pastrami(topping)" }
+        { check: false, task: "Pepperoni" },
+        { check: false, task: "Mushrooms" },
+        { check: false, task: "Roasted Red Peppers" },
+        { check: false, task: "Fresh Tomato" },
+        { check: false, task: "Sliced Italian" },
+        { check: false, task: "Fresh Garlic" },
+        { check: false, task: "Green Peppers" },
+        { check: false, task: "American Corn" },
+        { check: false, task: "Gorgonzola" },
+        { check: false, task: "Pastrami" }
       ];
     
       const [taskList, addTask] = useState(defaultTasks);
       const [crustList, addCrust] = useState(defaultSizes);
-    
-    
       const [cheeseList, addCheese] = useState(defaultCheese);
       const [sauceList, addSauce] = useState(defaultSauce);
       const [toppingsList, addTopings] = useState(defaultToppings);
@@ -80,11 +79,6 @@ export function CustomizePizza() {
         const [addcart, setCart] = useState(check);
         const style = { textDecoration: addcart ? "" : "underline" };
         const style1 = { textDecoration: addcart ? "underline" : "" };
-    
-        // const removing = (id) => {
-        //   const removedList = taskList.filter((task, index) => index !== id);
-        //   remove(removedList);
-        // };
     
         return (
           <div className="tasks">
@@ -176,6 +170,7 @@ export function CustomizePizza() {
       }
     
       return (
+        <div className="App-bg">
         <div className="App">
           <h1>Make Your Own Combination!!!</h1>
           <div className="addTask-grid"></div>
@@ -295,6 +290,7 @@ export function CustomizePizza() {
                   ))
               : ""}
           </div>
+        </div>
         </div>
       );
 }

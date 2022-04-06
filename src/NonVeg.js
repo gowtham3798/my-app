@@ -14,7 +14,7 @@ export function NonVegMenu(){
     },[])
   console.log(nonVegPizzas)
     return (
-        <div className="nonveg-list">
+        <div className="pizza-list" id="NonVeg">
   
            {nonVegPizzas.map(({name,image,summary,id},index) => (
                <NonVegPizzas key={index} name={name} image={image} summary={summary} id={id} />

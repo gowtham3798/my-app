@@ -1,10 +1,16 @@
 import React, { Component } from "react";
 import MenuItems from "./MenuItems";
 import CartItems from "./CartItems";
+import Button from '@mui/material/Button';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Payment from '../payment'
 import { connect } from "react-redux";
 
+
+
 class HomePage extends Component {
-  render() {
+  render()
+  {
     return (
       <div className="container-fluid">
         <div className="row">
@@ -47,38 +53,7 @@ class HomePage extends Component {
                             </div>
                             <div className="row justify-content-md-center">
                               <div className="card-body">
-                                {/*This way we can transfer the initialstate to the CartItems
-                                                                and we can map state to props there. It works perfectly*/}
-
                                 <CartItems />
-
-                                {/*Quantity change does not appear on UI
-                                                                in the following way
-                                                                {console.log(this.props.stateArray.cart)}
-                                                                {
-                                                                    this.props.stateArray.cart.map((item,index) => {
-                                                                        return(
-                                                                            <CartItems
-                                                                                key={index}
-                                                                                item={item}
-                                                                            />
-                                                                        );
-                                                                    })
-                                                                }*/}
-
-                                {/*In order to show quantity update on UI, we can pass
-                                                                qty of item separately*/}
-                                {/*{
-                                                                    this.props.stateArray.cart.map((item,index) => {
-                                                                        return(
-                                                                            <CartItems
-                                                                                key={index}
-                                                                                item={item}
-                                                                                qty={item.qty}
-                                                                            />
-                                                                        );
-                                                                    })
-                                                                }*/}
                               </div>
                             </div>
                           </div>
@@ -90,7 +65,13 @@ class HomePage extends Component {
                 <div className="text-center">
                   <label className="h1 control-label">
                     Total: {this.props.stateArray.total.totalvalue}
+                  </label><br />
+                  <label style={{textcolor: 'white'}}>
+                    <Button variant="outlined" size="large"><Link to={'/payment'} style={{textcolor: 'white'}}>Confirm</Link></Button>
                   </label>
+                  <Switch>
+              <Route exact path='/payment' component={Payment} />
+              </Switch >
                 </div>
               </div>
             </div>
@@ -103,12 +84,6 @@ class HomePage extends Component {
 
 function mapStateToProps(stateArray) {
   console.log(stateArray);
-  // const inventoryArr = Object.keys(state.inventory).map((item) => (
-  //     {
-  //         'item' : item,
-  //     }
-  // ));
-  // return {inventoryArray};
   return { stateArray };
 }
 
